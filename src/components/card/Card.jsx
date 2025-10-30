@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux"
 import { addFavorite, removeFavorite } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import style from "./card.module.css"
 
 const Card = ({ id, name, image }) => {
   const dispatch = useDispatch();
@@ -23,12 +24,21 @@ const Card = ({ id, name, image }) => {
   };
 
   return (
-    <div>
+    <div className={style.all}>
+      
+      <div className={style.to}>
       <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
       <Link to={`/detail/${id}`}>
         <h2>{name}</h2>
-        <img src={image} alt={name} style={{ borderRadius: "100%" }} />
       </Link>
+      </div>
+
+
+      <div className={style.imagen}>
+        <img src={image} alt={name}/>
+      </div>
+
+
     </div>
   );
 };

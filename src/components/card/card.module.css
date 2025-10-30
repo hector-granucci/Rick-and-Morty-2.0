@@ -1,0 +1,48 @@
+.all {
+  display: flex;
+  flex-direction: column;   /* acomoda elementos verticalmente */
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 10px;
+  overflow: hidden;         /* elimina espacio interno y recortes */
+  width: 220px;             /* ancho fijo para las cards */
+  background-color: #000;   /* opcional: fondo negro */
+}
+
+/* Parte superior (botón + nombre) */
+.to {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* todo alineado a la izquierda */
+  gap: 8px; /* espacio entre el botón y el nombre */
+  padding: 6px; /* espacio interno pequeño */
+}
+
+/* Botón */
+.to button {
+  border-radius: 8px;
+  padding: 3px 5px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  font-size: 18px;
+}
+
+/* Nombre */
+.to h2 {
+  color: white;
+  font-size: 15px;
+  margin: 0;
+  white-space: nowrap;        /* evita que se divida en líneas */
+  overflow: hidden;           /* corta el exceso */
+  text-overflow: ellipsis;    /* agrega los “…” si es muy largo */
+  max-width: 150px;           /* limita el ancho del texto */
+}
+
+/* Imagen */
+.imagen img {
+  width: 100%;       /* ocupa todo el ancho del card */
+  height: 250px;     /* altura fija */
+  object-fit: cover; /* recorta si hace falta */
+  border-radius: 0;  /* sin bordes redondeados dentro */
+  display: block;    /* elimina espacios blancos */
+}

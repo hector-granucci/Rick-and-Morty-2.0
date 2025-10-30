@@ -21,12 +21,8 @@ const SearchBar = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Buscar personaje..."
-        value={name}
-        onChange={handleChange}
-      />
+      <input type="text" placeholder="Buscar personaje..." value={name} onChange={handleChange}/>
+      
       <button onClick={handleSearch}>Buscar</button>
     </div>
   );

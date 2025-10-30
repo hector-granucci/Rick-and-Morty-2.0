@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllCHARACTERS } from "../../redux/actions/actions";
 import Card from "../card/Card";
 import Filters from "../filters/Filters";
+import style from "./cards.module.css"
 
 
 const Cards = () => {
@@ -18,8 +19,9 @@ const Cards = () => {
   const charactersToShow = filteredCharacters.length ? filteredCharacters : allCharacters;
 
   return (
-    <div>
+    <div className={style.all}>
           <Filters />
+          <div className={style.cards}>
       {charactersToShow?.map((character) => (
         <Card
           key={character.id}
@@ -28,6 +30,7 @@ const Cards = () => {
           image={character.image}
         />
       ))}
+          </div>
     </div>
   );
 };

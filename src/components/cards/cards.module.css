@@ -1,0 +1,21 @@
+.all{
+     background-image: url("../../fondo/rick.jpg");
+  background-size: cover;         /* ✅ la imagen cubre toda la pantalla */
+  background-position: center;    /* ✅ centrada */
+  background-repeat: no-repeat;   /* ✅ sin repetir */
+  min-height: 100vh;              /* ✅ ocupa toda la altura de la pantalla */
+  width: 100%;                    /* ✅ ocupa todo el ancho */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;    /* mantiene los filtros arriba */
+}
+
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 👈 5 columnas iguales */
+  gap: 20px; /* espacio entre las cards */
+  justify-items: center; /* centra las cards en su columna */
+  padding: 20px;
+}
