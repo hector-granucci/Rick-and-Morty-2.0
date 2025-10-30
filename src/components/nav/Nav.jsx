@@ -9,14 +9,15 @@ const Nav = () => {
         <nav className={style.all}>
             <div className={style.buttons}>
             <Button path="/home" text="Home"/>
-            <Button path="/form" text="Form" />
             </div>
 
-            <div className={style.buscador}>               
+            <div>               
             <SearchBar />
             </div>
+
             <div className={style.buttons}>
-            <Button path="/favorites" text="Favorites 💖" />
+            <Button path="/favorites" text="Favorites" />
+            <Button path="/form" text="Form" />
             </div>
  
         </nav>

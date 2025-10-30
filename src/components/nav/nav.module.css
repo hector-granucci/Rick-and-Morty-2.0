@@ -30,8 +30,3 @@
 
 
 /* buscador */
-.buscador input[type="text"] {
-  padding: 5px ;
-  border-radius: 5px;
-  border: 1px solid #d10303;
-}

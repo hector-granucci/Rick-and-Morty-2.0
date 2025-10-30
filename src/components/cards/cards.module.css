@@ -11,11 +11,41 @@
   justify-content: flex-start;    /* mantiene los filtros arriba */
 }
 
-
 .cards{
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 👈 5 columnas iguales */
   gap: 20px; /* espacio entre las cards */
   justify-items: center; /* centra las cards en su columna */
   padding: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  background-color: aquamarine;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.pagination button:hover {
+  background-color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination .active {
+  background-color: white;
+  color: black;
 }

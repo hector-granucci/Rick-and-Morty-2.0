@@ -1,17 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  filterByStatus,
-  filterBySpecies,
-  filterByGender,
-  filterByOrigin,
-} from "../../redux/actions/actions";
+import { filterByStatus, filterBySpecies, filterByGender, filterByOrigin } from "../../redux/actions/actions";
+import style from "./filters.module.css"
 
 const Filters = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={style.all}>
       <label>Status:</label>
       <select onChange={(e) => dispatch(filterByStatus(e.target.value))}>
         <option value="">Todos</option>

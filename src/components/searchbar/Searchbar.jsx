@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { searchCharacterByName, getAllCHARACTERS } from "../../redux/actions/actions";
+import style from "./searchbar.module.css"
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className={style.all}>
       <input type="text" placeholder="Buscar personaje..." value={name} onChange={handleChange}/>
       
       <button onClick={handleSearch}>Buscar</button>

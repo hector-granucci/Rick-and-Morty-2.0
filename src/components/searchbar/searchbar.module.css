@@ -1,0 +1,18 @@
+.all input[type="text"] {
+  padding: 6px ;
+  border-radius: 5px;
+}
+
+.all button{
+  border-radius: 10px;
+  border-color: rgb(9, 11, 12);
+  background-color: aquamarine;
+  color: rgb(0, 0, 0);
+  padding: 5px 8px;
+  font-size: 15px; 
+}
+.all button:hover{
+  background-color: rgb(253, 255, 254);
+  color: #d10303;
+}
+
