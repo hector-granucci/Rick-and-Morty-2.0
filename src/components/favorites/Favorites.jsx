@@ -9,14 +9,12 @@ const Favorites = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;
 
-  // Calculamos las cards visibles de la página actual
+  const totalPages = Math.ceil(myFavorites.length / cardsPerPage);
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = myFavorites.slice(indexOfFirstCard, indexOfLastCard);
 
-  const totalPages = Math.ceil(myFavorites.length / cardsPerPage);
-
-  // 🔹 Si la página actual quedó vacía, volvemos a la página 1
+  // 🔹 Si la página actual queda vacía, ir a la 1
   useEffect(() => {
     if (currentCards.length === 0 && currentPage !== 1) {
       setCurrentPage(1);
@@ -40,17 +38,38 @@ const Favorites = () => {
             ))}
           </div>
 
-          {/* Paginación */}
+          {/* 🔹 Paginación inteligente */}
           <div className={style.pagination}>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index + 1}
-                onClick={() => setCurrentPage(index + 1)}
-                className={currentPage === index + 1 ? style.active : ""}
-              >
-                {index + 1}
-              </button>
-            ))}
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              ◀
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1)
+              .filter(page => 
+                page === 1 || 
+                page === totalPages || 
+                (page >= currentPage - 2 && page <= currentPage + 2)
+              )
+              .map(page => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={currentPage === page ? style.active : ""}
+                >
+                  {page}
+                </button>
+              ))
+            }
+
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            >
+              ▶
+            </button>
           </div>
         </>
       )}
@@ -59,4 +78,5 @@ const Favorites = () => {
 };
 
 export default Favorites;
+
 

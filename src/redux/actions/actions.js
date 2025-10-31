@@ -4,16 +4,24 @@ import axios from "axios";
 
 const URL_BASE = "https://rickandmortyapi.com/api/character"
 
-export const getAllCHARACTERS = () => {
-    return async (dispatch) => {
-        try{
-            const { data } = await axios (URL_BASE);
-            return dispatch ({ type: GET_ALL_CHARACTERS, payload: data.results })
-        } catch (error){
-            console.log("error 404")
-        }
+export const getAllCHARACTERS = () => async (dispatch) => {
+  try {
+    const baseUrl = "https://rickandmortyapi.com/api/character";
+    let allCharacters = [];
+    let url = baseUrl;
+
+    while (url) {
+      const { data } = await axios(url);
+      allCharacters = [...allCharacters, ...data.results];
+      url = data.info.next; // siguiente página
     }
-}
+
+    dispatch({ type: GET_ALL_CHARACTERS, payload: allCharacters });
+  } catch (error) {
+    console.log("Error al traer todos los personajes:", error);
+  }
+};
+
 
 export const searchCharacterByName = (name) => {
   return async (dispatch) => {

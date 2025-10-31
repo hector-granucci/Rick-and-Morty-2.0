@@ -20,11 +20,17 @@ const Cards = () => {
     ? filteredCharacters
     : allCharacters;
 
+  const totalPages = Math.ceil(charactersToShow.length / cardsPerPage);
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = charactersToShow.slice(indexOfFirstCard, indexOfLastCard);
 
-  const totalPages = Math.ceil(charactersToShow.length / cardsPerPage);
+  // 🔹 Ajusta la página si queda vacía
+  useEffect(() => {
+    if (currentCards.length === 0 && currentPage !== 1) {
+      setCurrentPage(1);
+    }
+  }, [currentCards, currentPage]);
 
   return (
     <div className={style.all}>
@@ -41,17 +47,38 @@ const Cards = () => {
         ))}
       </div>
 
-      {/* 📍 Paginación con botones numéricos */}
+      {/* 🔹 Paginación inteligente */}
       <div className={style.pagination}>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => setCurrentPage(index + 1)}
-            className={currentPage === index + 1 ? style.active : ""}
-          >
-            {index + 1}
-          </button>
-        ))}
+        <button
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          ◀
+        </button>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1)
+          .filter(page => 
+            page === 1 || 
+            page === totalPages || 
+            (page >= currentPage - 2 && page <= currentPage + 2)
+          )
+          .map(page => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={currentPage === page ? style.active : ""}
+            >
+              {page}
+            </button>
+          ))
+        }
+
+        <button
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          ▶
+        </button>
       </div>
     </div>
   );
