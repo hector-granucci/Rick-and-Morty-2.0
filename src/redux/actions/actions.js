@@ -1,4 +1,5 @@
-import { GET_ALL_CHARACTERS, GET_CHARACTER_DETAIL, CLEAN_DETAIL, ADD_FAVORITE, REMOVE_FAVORITE,FILTER_STATUS, FILTER_SPECIES, FILTER_GENDER, FILTER_ORIGIN } from "./action-types";
+import { GET_ALL_CHARACTERS, GET_CHARACTER_DETAIL, CLEAN_DETAIL, ADD_FAVORITE, REMOVE_FAVORITE,
+  FILTER_STATUS, FILTER_SPECIES, FILTER_GENDER, FILTER_ORIGIN, RESET_FILTERS } from "./action-types";
 import axios from "axios";
 
 const URL_BASE = "https://rickandmortyapi.com/api/character"
@@ -72,3 +73,7 @@ export const filterByOrigin = (origin) => ({
   type: FILTER_ORIGIN,
   payload: origin,
 });
+
+export const resetFilters = () => {
+  return { type: RESET_FILTERS };
+};

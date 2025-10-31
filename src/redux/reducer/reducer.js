@@ -1,4 +1,5 @@
-import { GET_ALL_CHARACTERS, GET_CHARACTER_DETAIL, CLEAN_DETAIL, ADD_FAVORITE, REMOVE_FAVORITE,FILTER_STATUS, FILTER_SPECIES, FILTER_GENDER, FILTER_ORIGIN } from "../actions/action-types";
+import { GET_ALL_CHARACTERS, GET_CHARACTER_DETAIL, CLEAN_DETAIL, ADD_FAVORITE, REMOVE_FAVORITE,
+  FILTER_STATUS, FILTER_SPECIES, FILTER_GENDER, FILTER_ORIGIN,RESET_FILTERS } from "../actions/action-types";
 
 
 const initialState = {
@@ -70,6 +71,11 @@ const reducer = (state = initialState, action) => {
         char.origin.name.toLowerCase().includes(action.payload.toLowerCase())
     ),
   };
+  case RESET_FILTERS:
+      return {
+        ...state,
+        filteredCharacters: [], // vacía los filtros
+      };
         default:
             return {...state}
     }

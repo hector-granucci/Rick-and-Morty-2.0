@@ -11,30 +11,37 @@ const Form = () => {
   const [errors, setErrors] = React.useState({});
   const [touched, setTouched] = React.useState({});
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [success, setSuccess] = React.useState(false); // ✅ nuevo estado
+  const [success, setSuccess] = React.useState(false);
 
+  // Maneja cambios de input
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput({ ...input, [name]: value });
     setErrors(validation({ ...input, [name]: value }));
   };
 
+  // Marca el campo como tocado
   const handleBlur = (event) => {
     const { name } = event.target;
     setTouched({ ...touched, [name]: true });
   };
 
+  // Envío simulado
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!errors.email && !errors.password && input.email && input.password) {
       setIsSubmitting(true);
+
       setTimeout(() => {
         setIsSubmitting(false);
-        setSuccess(true); // 👈 muestra el mensaje de éxito
+        setSuccess(true); // muestra el mensaje de éxito
         setInput({ email: "", password: "" }); // limpia campos
         setTouched({});
-      }, 1000); // 1 segundo de “envío”
+
+        // Mensaje desaparece después de 3 segundos
+        setTimeout(() => setSuccess(false), 3000);
+      }, 1000); // simula tiempo de envío
     }
   };
 
@@ -43,11 +50,11 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
         <input
-          onChange={handleChange}
-          onBlur={handleBlur}
           type="email"
           name="email"
           value={input.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
           className={errors.email && touched.email ? style.errorInput : ""}
         />
         {touched.email && errors.email && (
@@ -56,11 +63,11 @@ const Form = () => {
 
         <label htmlFor="password">Password:</label>
         <input
-          onChange={handleChange}
-          onBlur={handleBlur}
           type="password"
           name="password"
           value={input.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
           className={errors.password && touched.password ? style.errorInput : ""}
         />
         {touched.password && errors.password && (
@@ -71,8 +78,8 @@ const Form = () => {
           type="submit"
           disabled={
             isSubmitting ||
-            input.email === "" ||
-            input.password === "" ||
+            !input.email ||
+            !input.password ||
             errors.email ||
             errors.password
           }
@@ -80,7 +87,6 @@ const Form = () => {
           {isSubmitting ? "Enviando..." : "Submit"}
         </button>
 
-        {/* ✅ Mensaje visual de éxito */}
         {success && <p className={style.successMsg}>✅ Formulario enviado con éxito</p>}
       </form>
     </div>
