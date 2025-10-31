@@ -1,0 +1,60 @@
+.all {
+  background-image: url("../../fondo/rick.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 20px;
+  overflow-x: hidden; /* 👈 evita scroll lateral */
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 👈 adaptable */
+  gap: 30px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1400px; /* 👈 centra la grilla en pantallas grandes */
+}
+
+.cards p{
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
+}
+
+/* 📍 Estilo de paginación igual que tus botones */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.pagination button {
+  border-radius: 10px;
+  border: 1px solid rgb(9, 11, 12);
+  background-color: aquamarine;
+  color: rgb(0, 0, 0);
+  padding: 5px 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:hover {
+  background-color: rgb(253, 255, 254);
+  color: #d10303;
+}
+
+/* 📍 Botón activo */
+.active {
+  background-color: #d10303;
+  color: white;
+  font-weight: bold;
+}

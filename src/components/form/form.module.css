@@ -1,0 +1,88 @@
+.all {
+  background-image: url("../../fondo/form.jpg");
+  background-size: cover;         /* la imagen cubre toda la pantalla */
+  background-position: center;    /* centrada */
+  background-repeat: no-repeat;   /* sin repetir */
+  min-height: 100vh;              /* ocupa toda la altura de la pantalla */
+  width: 100%;                    /* ocupa todo el ancho */
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* centra horizontalmente */
+  justify-content: center;        /* centra verticalmente */
+  box-sizing: border-box;
+  overflow: hidden;               /* evita que sobresalga */
+  padding: 0 20px;                /* evita que pegue a los bordes en pantallas chicas */
+}
+
+/* Estilos del formulario */
+form {
+  background-color: rgba(0, 0, 0, 0.7); /* fondo semitransparente */
+  padding: 30px 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+form input {
+  border-radius: 8px;
+  border: 1px solid #d10303;
+  padding: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+form button {
+  border-radius: 10px;
+  background-color: aquamarine;
+  border: 1px solid black;
+  color: black;
+  padding: 8px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+form button:hover {
+  background-color: white;
+  color: #d10303;
+}
+
+
+
+.errorText {
+  color: red;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.errorInput {
+  border: 2px solid red;
+}
+
+.successMsg {
+  color: rgb(0, 255, 128);
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(0, 255, 128);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Efecto suave al aparecer */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
